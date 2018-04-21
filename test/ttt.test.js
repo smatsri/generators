@@ -1,5 +1,5 @@
 import { assert, expect } from "chai";
-import { Pos, Player, X, O, Cell, Board, CellAlreadySet, NotPlayerTurn, getCell, cycle, range, SetCell, act } from "../pg/ttt";
+import { Pos, Player, X, O, Cell, Board, CellAlreadySet, NotPlayerTurn, getCell, cycle, range, SetCell, act } from "../src/ttt";
 import { None, Some } from "../src/maybe";
 import { ResultM } from "../src/result";
 

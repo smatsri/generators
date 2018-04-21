@@ -23,31 +23,3 @@ describe("MaybeM",function () {
     })
 
 })
-
-
-
-
-// function prop(o, key) {
-//     let value = o[key]
-//     return value ? Some(value) : None;
-// }
-
-
-// const getFullName = MaybeM.Create(function* (o) {
-//     let firstName = yield prop(o, 'firstName')
-//     let lastName = yield prop(o, 'lastName')
-//     return firstName + ' ' + lastName
-// })
-
-// const person = {
-//     firstName: 'shai',
-//     lastName: 'm'
-// }
-
-// const person2 = {
-//     firstName: 'shai',
-//     _lastName: 'm'
-// }
-
-// let fullNameM = getFullName(person)
-// fullNameM = getFullName(person2)

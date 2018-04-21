@@ -6,8 +6,6 @@ describe("Result", function () {
         let divide = (x, y) =>{
             return (y == 0) ? Fail('cannot devide by zero') : Success(x / y);
         }
-           
-
 
         it('Success(10) / Success(5) + Success(2) == Success(4)', function () {
             

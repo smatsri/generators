@@ -1,16 +1,3 @@
-/**
- * X = 1
- * Y = 2
- * Player = X | Y
- * Pos = [0..8]
- * Cell = Maybe(Player)
- * SetCell = (Player, Pos)
- * Turn = Player
- * Board = ([Cell],Turn)
- * Apply =  (Action, State) => Result(State)
- * GetCell = (Cell[],Pos) => Cell
- * CellAlreadySet = ""
- */
 import { Some, None } from "../src/maybe";
 import { Success, Fail, ResultM, bind } from "../src/result";
 import { compose } from "lodash/fp";
@@ -34,20 +21,19 @@ export const cycle = function* (arr = [0]) {
 }
 
 
-
 export const Pos = between(0, 8)
 export const Player = (p = X) => p == O ? O : X
 export const Cell = (pos = Pos(0), player = None) => ({ pos, player })
 export const SetCell = (player = Player(X), pos = Pos(0)) => ({ type: 'SetCell', pos, player })
 export const Turn = Player
-const emptyCells = range(0, 8).map(i => Cell(Pos(i)))
 export const Board = (cells = emptyCells, turn = Player(X)) => ({ cells, turn })
 
-export const getCell = (board, pos) => board.cells.find(c => c.pos == pos)
 
 export const CellAlreadySet = Fail("cell not empty")
 export const NotPlayerTurn = Fail("not player turn")
 
+const getCell = (board, pos) => board.cells.find(c => c.pos == pos)
+const emptyCells = range(0, 8).map(i => Cell(Pos(i)))
 const nextTurn = cur => cur == Player(X) ? Player(O) : Player(X)
 const getPlayer = (turn, player) => turn == player ? Success(player) : NotPlayerTurn
 const setPlayer = (cell = Cell(), player = X) =>
@@ -64,7 +50,6 @@ const setCell = ResultM.Create(function* (board = Board(), action = SetCell()) {
     let turn = nextTurn(board.turn)
 
     return Board(cells, turn)
-
 })
 
 export const act = (board, action) => {
