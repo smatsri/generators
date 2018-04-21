@@ -1,10 +1,10 @@
 
-export const M = (pure, bind) => {
+export const M = (unit, bind) => {
     const run = (iter) => {
         const doNext = (iter, input) => {
             let { value, done } = iter.next(input)
             if (done) {
-                return pure(value)
+                return unit(value)
             }
             return bind(i => doNext(iter, i), value)
         }
