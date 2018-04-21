@@ -1,5 +1,5 @@
 import { Some, None } from "./maybe";
-import { Success, Fail, ResultM, bind } from "./result";
+import { Success, Fail, ResultM, bind, run } from "./result";
 import { compose } from "lodash/fp";
 
 
@@ -41,17 +41,22 @@ const getPlayer = (turn, player) => turn == player ? Success(player) : Fail(NotP
 const setPlayer = (cell = Cell(), player = X) =>
     cell.player == None ? Success(Cell(cell.pos, player)) : Fail(CellAlreadySet)
 
+const updateBoard = (board,updatedCell) => {
+    
+    let cells = board.cells.map(c => c.pos == updatedCell.pos ? updatedCell : c)
+    let turn = nextTurn(board.turn)
 
+    return Board(cells, turn)
+}
+
+const create = ResultM.Create
 // actions
-const setCell = ResultM.Create(function* (board = Board(), action = SetCell()) {
+const setCell = create(function* (board = Board(), action = SetCell()) {
     let player = yield getPlayer(board.turn, action.player)
     let cell = getCell(board, action.pos)
     let updatedCell = yield setPlayer(cell, action.player)
 
-    let cells = board.cells.map(c => c.pos == action.pos ? updatedCell : c)
-    let turn = nextTurn(board.turn)
-
-    return Board(cells, turn)
+    return updateBoard(board, updatedCell)
 })
 
 export const act = (board, action) => {
