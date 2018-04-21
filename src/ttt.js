@@ -29,15 +29,15 @@ export const Turn = Player
 export const Board = (cells = emptyCells, turn = Player(X)) => ({ cells, turn })
 
 
-export const CellAlreadySet = Fail("cell not empty")
-export const NotPlayerTurn = Fail("not player turn")
+export const CellAlreadySet = "cell not empty"
+export const NotPlayerTurn = "not player turn"
 
 const getCell = (board, pos) => board.cells.find(c => c.pos == pos)
 const emptyCells = range(0, 8).map(i => Cell(Pos(i)))
 const nextTurn = cur => cur == Player(X) ? Player(O) : Player(X)
-const getPlayer = (turn, player) => turn == player ? Success(player) : NotPlayerTurn
+const getPlayer = (turn, player) => turn == player ? Success(player) : Fail(NotPlayerTurn)
 const setPlayer = (cell = Cell(), player = X) =>
-    cell.player == None ? Success(Cell(cell.pos, player)) : CellAlreadySet
+    cell.player == None ? Success(Cell(cell.pos, player)) : Fail(CellAlreadySet)
 
 
 

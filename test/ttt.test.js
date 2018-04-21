@@ -27,7 +27,7 @@ describe("tic tac toe", () => {
                 })
             
                 assert.isFalse(res.success)
-                expect(res).to.deep.equal(CellAlreadySet)
+                expect(res.error).to.equal(CellAlreadySet)
 
             })
 
@@ -40,7 +40,7 @@ describe("tic tac toe", () => {
                 })
             
                 assert.isFalse(res.success)
-                expect(res).to.deep.equal(NotPlayerTurn)
+                expect(res.error).to.equal(NotPlayerTurn)
 
             })
         })
