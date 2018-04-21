@@ -1,4 +1,4 @@
-import { M } from "./monad";
+import { M } from "./m";
 
 // export const unit = x => [x]
 // export const bind = (xs, f) => xs.map(f).reduce((a, b) => a.concat(b), [])

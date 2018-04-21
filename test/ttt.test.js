@@ -1,5 +1,5 @@
 import { assert, expect } from "chai";
-import { Pos, Player, X, O, Cell, Board, CellAlreadySet, NotPlayerTurn, getCell, cycle, range, SetCell, act } from "../src/ttt";
+import { Pos, Player, X, O, Cell, Board, CellAlreadySet, NotPlayerTurn, cycle, range, SetCell, act } from "../src/ttt";
 import { None, Some } from "../src/maybe";
 import { ResultM } from "../src/result";
 
@@ -14,12 +14,6 @@ describe("tic tac toe", () => {
         expect(Player()).to.equal(Player(X))
         expect(Player(O)).to.equal(Player(O))
         expect(Player(123)).to.equal(Player(X))
-    })
-    it('can find cell', () => {
-        let b = Board()
-        let p = Pos(5)
-        let cell = getCell(b, p)
-        expect(cell.pos).to.equal(Pos(5))
     })
 
     describe('act', () => {

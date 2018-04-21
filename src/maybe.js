@@ -1,5 +1,5 @@
 import { curry, compose } from "lodash/fp";
-import { M } from "./monad";
+import { M } from "./m";
 
 export const Maybe = (isSome, value) => ({ isSome, value })
 

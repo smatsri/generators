@@ -1,5 +1,5 @@
-import { Some, None } from "../src/maybe";
-import { Success, Fail, ResultM, bind } from "../src/result";
+import { Some, None } from "./maybe";
+import { Success, Fail, ResultM, bind } from "./result";
 import { compose } from "lodash/fp";
 
 export const X = 1
