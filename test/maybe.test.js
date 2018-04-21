@@ -1,7 +1,7 @@
 import { MaybeM, Some, None } from "../src/maybe"
 import { expect, assert } from 'chai'
 
-describe("MaybeM",function () {
+describe("Maybe",function () {
     describe('bind', function(){
         it('Some(1) + Some(2) == Some(3)', function () {
             let result = MaybeM.Run(function* () {
