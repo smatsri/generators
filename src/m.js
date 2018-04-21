@@ -6,10 +6,7 @@ export const M = (pure, bind) => {
             if (done) {
                 return pure(value)
             }
-            return bind(i => {
-                let a = doNext(iter, i)
-                return a;
-            }, value)
+            return bind(i => doNext(iter, i), value)
         }
     
         return doNext(iter)
